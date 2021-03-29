@@ -1,0 +1,18 @@
+source leaprc.gaff2
+source leaprc.water.tip3p
+set default PBradii mbondi3
+
+loadAmberPrep ace.prepin
+loadAmberPrep sar.prepin
+loadAmberPrep ndm.prepin
+loadAmberParams frcmod.sar
+
+mol = sequence {ace SAR ndm}
+check mol
+
+setbox mol centers 12
+#solvatebox mol TIP3PBOX 12 iso 0.8
+
+saveamberparm mol disarcosine.prmtop disarcosine.inpcrd
+savepdb mol disarcosine.pdb
+quit
